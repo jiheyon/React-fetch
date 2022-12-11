@@ -1,3 +1,5 @@
+// 요청을 제일 처음 받는곳임, 컨트롤러
+// 1.컨트롤러, 2.레파지토리
 package com.example.demo.todo.api;
 
 import com.example.demo.todo.dto.FindAllDTO;
@@ -18,7 +20,7 @@ import java.math.BigInteger;
 @CrossOrigin        // 다른 서버의 요청 허용
 public class TodoApiController {
 
-    private final TodoService service;
+    private final TodoService service;  // API는 TodoService가 있어야 일할수있음, 의존관계
 
     // 할 일 목록 전체조회 요청
     @GetMapping
@@ -51,10 +53,10 @@ public class TodoApiController {
     // 할 일 개별 조회 요청
     // URI : /api/todos/3 : GET  => 3번 할 일만 조회해서 클라이언트에게 리턴
     @GetMapping("/{id}")
-    public ResponseEntity<?> findOne(@PathVariable Long id) {
+    public ResponseEntity<?> findOne(@PathVariable String id) {
         log.info("/api/todos/{} GET request!", id);
 
-        if (id == null || id < 0) return ResponseEntity.badRequest().build();
+        if (id == null) return ResponseEntity.badRequest().build();
 
         TodoDto dto = service.findOneServ(id);
 
@@ -69,7 +71,7 @@ public class TodoApiController {
     // => 3번 할 일을 삭제 후 삭제된 이후 갱신된 할일 목록 리턴
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable long id) {
+    public ResponseEntity<?> delete(@PathVariable String id) {
 
         log.info("/api/todos/{} DELETE request!", id);
 
