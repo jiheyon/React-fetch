@@ -5,6 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+
+import javax.transaction.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,7 +23,7 @@ class TodoRepositoryTest {
         ToDo toDo = new ToDo();
         toDo.setTitle("하하호호 수정하기");
         toDo.setDone(true);
-        toDo.setId("0b108a6c-8175-4743-b5a5-6dcc740710f3");
+        toDo.setId("b7bcf31d-c455-4240-b311-f20e67f81973");
 
         // when
         boolean flag = repository.modify(toDo);

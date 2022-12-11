@@ -17,5 +17,6 @@ public class TodoDto {
         this.id = toDo.getId();
         this.title = toDo.getTitle();
         this.done = toDo.isDone();
+       // this.Date = toDo.getRegDate();
     }
 }

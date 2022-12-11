@@ -84,4 +84,19 @@ public class TodoApiController {
 
     }
 
+    // 할일 수정 요청
+    // 새 컨트롤러 만들면 포스트맨으로 확인해보기
+    @PutMapping
+    public ResponseEntity<?> update(@RequestBody ToDo toDo) {
+
+        log.info("/api/todos PUT request! - {}", toDo);
+
+        try {
+            FindAllDTO dtos = service.update(toDo);
+            return ResponseEntity.ok().body(dtos);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
 }

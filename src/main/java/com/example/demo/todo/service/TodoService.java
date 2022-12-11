@@ -61,4 +61,14 @@ public class TodoService {
 
         return toDo != null ? new TodoDto(toDo) : null;
     }
+
+    public FindAllDTO update(ToDo toDo) { //수정된 정보를 가지고 나갈거임
+
+        boolean flag = repository.modify(toDo);
+
+        return flag ? findAllServ() : new FindAllDTO();
+    }
+    // 수정잘 하면 수정된 갱신된 목록을 가져다 줌 -> findAllServ()
+
+
 }
