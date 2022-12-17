@@ -1,6 +1,6 @@
 // 요청을 제일 처음 받는곳임, 컨트롤러
 // 1.컨트롤러, 2.레파지토리
-package com.example.demo.todo.api;
+package com.example.demo.todo.entity.api;
 
 import com.example.demo.todo.dto.FindAllDTO;
 import com.example.demo.todo.dto.TodoDto;
