@@ -39,7 +39,7 @@ public class TodoService {
         boolean flag = repository.save(newTodo);
         if (flag) log.info("새로운 할일 [Id: {}]이 저장되었습니다.", newTodo.getId());
 
-        return flag ? findAllServ() : null;
+        return flag ? findAllServ(newTodo.getUserId()) : null;
     }
 
     public FindAllDTO deleteServ(String id) {
@@ -66,7 +66,7 @@ public class TodoService {
 
         boolean flag = repository.modify(toDo);
 
-        return flag ? findAllServ() : new FindAllDTO();
+        return flag ? findAllServ(toDo.getUserId()) : new FindAllDTO();
     }
     // 수정잘 하면 수정된 갱신된 목록을 가져다 줌 -> findAllServ()
 
